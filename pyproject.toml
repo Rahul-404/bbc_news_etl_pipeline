@@ -1,0 +1,25 @@
+[project]
+name = "news-etl-pipeline"
+version = "0.0.1"
+description = "The goal of this project is to build a scalable and automated ETL pipeline that extracts news data from BBC News, stores it in a NoSQL database, and provides real-time monitoring of the scraping process to ensure reliability and performance."
+authors = [
+    {name = "Rahul Shelke"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = "3.11.7"
+
+[tool.poetry.dependencies]
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+pytest-mock = "^3.15.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
