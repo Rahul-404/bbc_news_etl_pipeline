@@ -1,15 +1,16 @@
-[project]
+[tool.poetry]
 name = "news-etl-pipeline"
 version = "0.0.1"
 description = "The goal of this project is to build a scalable and automated ETL pipeline that extracts news data from BBC News, stores it in a NoSQL database, and provides real-time monitoring of the scraping process to ensure reliability and performance."
-authors = [
-    {name = "Rahul Shelke"}
-]
-license = {text = "MIT"}
+authors = ["Rahul Shelke <rahul@example.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.10,<=3.11.7"
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
+python = ">=3.10,<=3.12"
 
 
 [tool.poetry.group.dev.dependencies]
