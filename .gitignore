@@ -212,6 +212,7 @@ __marimo__/
 *commands.txt
 *TODO.txt
 .pre-commit-config.yaml
+logs
 
 # documentation
 docs
