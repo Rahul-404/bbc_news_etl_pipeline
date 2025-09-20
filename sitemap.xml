@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://rahul-404.github.io/bbc-news-etl-pipeline/</loc>
+         <lastmod>2025-09-20</lastmod>
+    </url>
+    <url>
+         <loc>https://rahul-404.github.io/bbc-news-etl-pipeline/changelog/</loc>
+         <lastmod>2025-09-20</lastmod>
+    </url>
+    <url>
+         <loc>https://rahul-404.github.io/bbc-news-etl-pipeline/faq/</loc>
+         <lastmod>2025-09-20</lastmod>
+    </url>
+    <url>
+         <loc>https://rahul-404.github.io/bbc-news-etl-pipeline/api/clients.mongo_connector/</loc>
+         <lastmod>2025-09-20</lastmod>
+    </url>
+</urlset>
