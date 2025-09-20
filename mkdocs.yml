@@ -1,4 +1,4 @@
-site_name: News ETL Docs
+site_name: ETL Pipeline Docs
 site_url: https://rahul-404.github.io/bbc-news-etl-pipeline/
 site_description: >
   A scalable and automated ETL pipeline that extracts news data from BBC News,
@@ -6,9 +6,16 @@ site_description: >
 
 theme:
   name: material
+  repo_url: https://github.com/rahul-404/bbc-news-etl-pipeline/
+  repo_name: rahul-404/bbc-news-etl-pipeline
   icon:
+    repo: fontawesome/brands/git-alt
     logo: fontawesome/solid/r
-    # favicons: assets/favicon.ico
+    favicons: assets/favicon.ico
+  language: en
+  font:
+    text: Merriweather Sans
+    code: Red Hat Mono
   features:
     - content.code.annotate
     - content.code.copy
@@ -24,31 +31,50 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
+    # - header.autohide
 
   palette:
 
-    # Palette toggle for dark mode
-    - scheme: slate
-      primary: black
-      accent: deep orange
-      toggle:
-        icon: material/weather-night
-        name: Switch to light mode
-
     # Palette toggle for light mode
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: blue
       accent: deep orange
       toggle:
-        icon: material/weather-sunny
+        icon: material/toggle-switch-off-outline
         name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
 
 nav:
   - Home: index.md
+  - Getting Started:
+      - Installation: installation.md
+      - Usage: usage.md
+  - Architecture:
+      - Overview: architecture/overview.md
+      - Components:
+          - Scraper: architecture/scraper.md
+          - ETL Pipeline: architecture/etl_pipeline.md
+          - Monitoring: architecture/monitoring.md
+  - Configuration:
+      - Loki: configuration/loki.md
+      - Promtail: configuration/promtail.md
+      - Prometheus: configuration/prometheus.md
+  - Development:
+      - Contributing: development/contributing.md
+      - Testing: development/testing.md
+      - Deployment: development/deployment.md
   - API Reference:
       - Mongo Connector: api/clients.mongo_connector.md
-  - FAQ: faq.md
-  - Changelog: changelog.md
 
 plugins:
   - search
@@ -57,6 +83,8 @@ plugins:
         python:
           options:
             docstring_style: numpy # or numpy, auto, google, sphinx
+            show_source: true
+            heading_level: 2        # H2 for class/function/module names
 
   - social:
       cards_layout_options:
@@ -76,12 +104,26 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: pymdownx.superfences.fence_code_format
+          # format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
 
   - admonition
   - pymdownx.details
 
-# extra_css:
-#   - assets/custom.css
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/rahulshelke981/
+      name: LinkedIn
+    - icon: fontawesome/brands/github
+      link: https://github.com/Rahul-404
+      name: Github
+    - icon: fontawesome/brands/instagram
+      name: Instagram
+    - icon: fontawesome/brands/x-twitter
+      name: X-twitter
+
+  generator: false
+
+copyright: Copyright &copy; 2025 Rahul Shelke
