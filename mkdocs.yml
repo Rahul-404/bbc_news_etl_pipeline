@@ -37,8 +37,8 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue
+      scheme: slate
+      primary: black
       accent: deep orange
       toggle:
         icon: material/toggle-switch-off-outline
@@ -46,8 +46,8 @@ theme:
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
+      scheme: default
+      primary: blue
       accent: deep orange
       toggle:
         icon: material/toggle-switch
@@ -59,6 +59,10 @@ nav:
   - Getting Started:
       - Installation: installation.md
       - Usage: usage.md
+  - Development:
+      - Deployment: development/deployment.md
+      - Contribution: development/contributing.md
+      - Testing: development/testing.md
   - API Reference:
       - Mongo Connector: api/clients.mongo_connector.md
 
