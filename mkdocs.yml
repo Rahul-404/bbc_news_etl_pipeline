@@ -6,7 +6,7 @@ site_description: >
 
 theme:
   name: material
-  repo_url: https://github.com/rahul-404/bbc-news-etl-pipeline/
+  repo_url: https://github.com/Rahul-404/bbc_news_etl_pipeline/
   repo_name: rahul-404/bbc-news-etl-pipeline
   icon:
     repo: fontawesome/brands/git-alt
@@ -42,7 +42,7 @@ theme:
       accent: deep orange
       toggle:
         icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        name: Switch to light mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -51,7 +51,7 @@ theme:
       accent: deep orange
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: Switch to dark mode
 
 
 nav:
@@ -109,10 +109,12 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/Rahul-404
       name: Github
-    - icon: fontawesome/brands/instagram
-      name: Instagram
-    - icon: fontawesome/brands/x-twitter
-      name: X-twitter
+    - icon: fontawesome/brands/kaggle
+      link: https://www.kaggle.com/rahulshelke98
+      name: Kaggle
+    - icon: simple/medium
+      link: https://medium.com/@rahulshelke3399
+      name: Medium
 
   generator: false
 
