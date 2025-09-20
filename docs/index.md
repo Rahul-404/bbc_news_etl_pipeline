@@ -1,7 +1,7 @@
 # BBC News Pipeline: Production-Grade Data Ingestion & ETL
-![CI](https://github.com/rahul-404/bbc_news_etl_pipeline/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Rahul-404/bbc_news_etl_pipeline/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
-![License](https://img.shields.io/github/license/rahul-404/bbc_news_etl_pipeline)
+![License](https://img.shields.io/github/license/Rahul-404/bbc_news_etl_pipeline)
 
 
 ## Overview
