@@ -214,10 +214,6 @@ __marimo__/
 .pre-commit-config.yaml
 logs
 
-# documentation
-docs
-mkdocs.yml
-
 # testing components
 .vscode
 *docker*

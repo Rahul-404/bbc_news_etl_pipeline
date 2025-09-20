@@ -1,0 +1,87 @@
+site_name: News ETL Docs
+site_url: https://rahul-404.github.io/bbc-news-etl-pipeline/
+site_description: >
+  A scalable and automated ETL pipeline that extracts news data from BBC News,
+  stores it in a NoSQL database, and provides real-time monitoring of the scraping process.
+
+theme:
+  name: material
+  icon:
+    logo: fontawesome/solid/r
+    # favicons: assets/favicon.ico
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - header.autohide
+    - announce.dismiss
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+
+  palette:
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - Mongo Connector: api/clients.mongo_connector.md
+  - FAQ: faq.md
+  - Changelog: changelog.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy # or numpy, auto, google, sphinx
+
+  - social:
+      cards_layout_options:
+        background_color: "#ff1493"
+
+  - autorefs:
+      link_titles: auto
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  - admonition
+  - pymdownx.details
+
+# extra_css:
+#   - assets/custom.css
