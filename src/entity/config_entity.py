@@ -47,3 +47,47 @@ class MongoDBConfig:
     MONGO_HOST: str = os.getenv("MONGO_HOST", "localhost")
     MONGO_PORT: int = int(os.getenv("MONGO_PORT", 27017))
     MONGODB_URI: str = f"mongodb://{MONGO_HOST}:{MONGO_PORT}/"
+
+@dataclass
+class RabbitMQConfig:
+    """
+    Configuration for RabbitMQ connection.
+
+    Environment Variables
+    ---------------------
+    RABBITMQ_HOST : str
+        RabbitMQ host address (default: 'localhost').
+
+    RABBITMQ_PORT : int
+        RabbitMQ port number (default: 5672).
+
+    RABBITMQ_VHOST : str
+        Virtual host for RabbitMQ (default: '/').
+
+    RABBITMQ_QUEUE_NAME : str
+        Name of the RabbitMQ queue to use (default: 'bbc_news_tasks').
+
+    RABBITMQ_USER : str
+        RabbitMQ username (default: 'guest').
+
+    RABBITMQ_PASSWORD : str
+        RabbitMQ password (default: 'guest').
+
+    Attributes
+    --------------
+    RABBITMQ_URL : str
+        Constructed AMQP URL in the form:
+        "amqp://<user>:<password>@<host>:<port>/"
+
+    RETRIES : int
+        Number of connection retry attempts. Default: 5.
+    """
+    RABBITMQ_HOST: str = os.getenv("RABBITMQ_HOST", "localhost")
+    RABBITMQ_PORT: int = int(os.getenv("RABBITMQ_PORT", 5672))
+    RABBITMQ_VHOST: str = os.getenv("RABBITMQ_VHOST", "/")
+    RABBITMQ_QUEUE_NAME: str = os.getenv("RABBITMQ_QUEUE_NAME", "bbc_news_tasks")
+    RABBITMQ_USER: str = os.getenv("RABBITMQ_USER", "guest")
+    RABBITMQ_PASSWORD: str = os.getenv("RABBITMQ_PASSWORD", "guest")
+    RABBITMQ_URL: str =  f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASSWORD}@{RABBITMQ_HOST}:{RABBITMQ_PORT}/"
+    RETRIES: int = 5
+    RETRY_BACKOFF_FACTOR: float = 2.0
