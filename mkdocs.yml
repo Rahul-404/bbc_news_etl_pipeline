@@ -8,7 +8,7 @@ repo_url: https://github.com/Rahul-404/bbc_news_etl_pipeline
 repo_name: bbc-news-etl-pipeline
 
 theme:
-  name: material
+  name: "material"
   icon:
     repo: fontawesome/brands/git-alt
     logo: fontawesome/solid/r
@@ -32,7 +32,6 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-    # - header.autohide
 
   palette:
 
@@ -57,15 +56,49 @@ theme:
 
 nav:
   - Home: index.md
+
   - Getting Started:
-      - Installation: installation.md
-      - Usage: usage.md
-  - Development:
-      - Deployment: development/deployment.md
-      - Contribution: development/contributing.md
-      - Testing: development/testing.md
+      - Prerequisites: getting_started/prerequisites.md
+      - Local Setup (Docker Compose): getting_started/local_setup.md
+      - Kubernetes Deployment (Helm/Kind): getting_started/k8s_deployment.md
+
+  - Architecture:
+      - High-Level Data Flow: architecture/overview.md
+      - Components Overview: architecture/components.md
+
+  - Components (deep dive):
+      - Producer (Scraper): components/producer.md
+      - Message Queue (RabbitMQ): components/rabbitmq.md
+      - Consumer (ETL worker): components/consumer.md
+      - Storage (MongoDB + Postgres): components/storage.md
+      - Monitoring (Prometheus + Grafana + Loki): components/monitoring.md
+
+  - Deployment:
+      - Docker images: deployment/docker.md
+      - Kubernetes Manifests: deployment/k8s.md
+
+  - Configuration: configuration/index.md
+
+  - Development & Testing:
+      - Project Layout: development/layout.md
+      - Running Tests & Pre-commit: development/testing.md
+
+  - Observability:
+      - Metrics (Prometheus): observability/metrics.md
+      - Dashboards (Grafana): observability/dashboards.md
+      - Logs (Loki + Promtail): observability/logs.md
+
+  - Scaling & Reliability: scaling/index.md
+
+  - CI/CD & Infrastructure: cicd/index.md
+
   - API Reference:
       - Mongo Connector: api/clients.mongo_connector.md
+      - RabbitMQ Connector: api/clients.rabbitmq_connector.md
+
+  - FAQ: faq.md
+
+  - Contributing: contributing.md
 
 plugins:
   - search
@@ -73,9 +106,20 @@ plugins:
       handlers:
         python:
           options:
-            docstring_style: numpy # or numpy, auto, google, sphinx
-            show_source: true
-            heading_level: 2        # H2 for class/function/module names
+            docstring_style: numpy                # or numpy, auto, google, sphinx
+            allow_inspection: true
+            find_stubs_package: false
+            heading_level: 3                      # starting header level
+            parameter_headings: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            type_parameter_headings: false
+            show_labels: false
+            show_submodules: true
+            extra:                                 # move all unrecognized/deprecated options here
+              ignore_init_summary: true
+              inheritance_diagram_direction: LR
+              trim_doctest_flags: true
 
   - social:
       cards_layout_options:
@@ -95,12 +139,14 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          # format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
-
-  - admonition
   - pymdownx.details
+  - pymdownx.highlight:
+      default_lang: python
+
+extra_javascript:
+- https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js
 
 extra:
   social:

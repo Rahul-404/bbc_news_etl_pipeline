@@ -3,45 +3,30 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/github/license/Rahul-404/bbc_news_etl_pipeline)
 
-
 ## Overview
 
-The **BBC News Pipeline** is a **data engineering project** designed as a **production-grade pipeline** for scalable news ingestion and transformation.
+This repository contains a production-grade pipeline to scrape BBC News (both live and archived articles), process them into analytics-ready records and store them for downstream use. The pipeline is built to run on Kubernetes with horizontally-scalable producers and consumers, robust observability (Prometheus, Grafana, Loki), and reliable message delivery via RabbitMQ.
 
-It automates the process of:
+Goals:
 
-- Scraping live BBC News articles
-- Storing raw JSON documents in **MongoDB**
-- Running ETL workflows with **Apache Airflow**
-- Loading cleaned, structured datasets into **PostgreSQL**
-- Monitoring system health and performance with **Prometheus, Grafana, Loki, and Promtail**
-- Containerized and deployed using **Docker** and **Kubernetes**
-- Provisioned via **Terraform** for Infrastructure as Code (IaC)
+- Reliable: durable queues, retry and DLQ patterns
+- Scalable: producers & consumers autoscalable on K8s
+- Observable: metrics, traces (optional), logs centralised in Loki
+- Portable: containerized components, IaC for cloud infra
+- Reproducible: deterministic ETL with versioned pipelines
+
+---
 
 This project demonstrates how to design a **real-world end-to-end data engineering system** that is robust, scalable, and production-ready.
 
 ---
 
-## Features
-- **Data Ingestion:** Web scraper for BBC News articles
-- **Raw Data Lake:** Semi-structured JSON storage in MongoDB
-- **ETL Pipeline:** Transformation & cleaning with Apache Airflow
-- **Data Warehouse Layer:** Structured, analytics-ready tables in PostgreSQL
-- **Monitoring:** Logs and metrics with Prometheus, Grafana, Loki, Promtail
-- **Infrastructure:** Modular, containerized services with Docker, Kubernetes & Terraform
+Quick links:
+
+- [mkdocs.yml]() — site config
+- [docs/]() — the markdown pages in this documentation
+- [helm/]() — Helm charts for deployment
+- [k8s/]() — base Kubernetes manifests
+- [docker/]() — Dockerfile sample for services
 
 ---
-
-## Repository Structure
-```bash
-bbc-news-etl-pipeline/
-│
-├── docs/                  # MkDocs documentation
-├── scraper/               # BBC web scraping scripts
-├── airflow_dags/          # ETL workflows
-├── configs/               # Configurations (Prometheus, Loki, etc.)
-├── docker/                # Dockerfiles for services
-├── k8s/                   # Kubernetes manifests
-├── terraform/             # IaC for provisioning infra
-└── README.md              # Quick project overview
-```

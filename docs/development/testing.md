@@ -1,4 +1,4 @@
-# Testing
+# Running Tests & Pre-commit
 
 Testing ensures code quality and reliability. This project uses both **unit** and **integration** tests.
 
