@@ -91,3 +91,36 @@ class RabbitMQConfig:
     RABBITMQ_URL: str =  f"amqp://{RABBITMQ_USER}:{RABBITMQ_PASSWORD}@{RABBITMQ_HOST}:{RABBITMQ_PORT}/"
     RETRIES: int = 5
     RETRY_BACKOFF_FACTOR: float = 2.0
+
+
+@dataclass
+class PostgresDBConfig:
+    """
+    Configuration for PostgreSQL database connection.
+
+    Environment Variables
+    ---------------------
+    POSTGRES_DATABASE_NAME : str
+        Name of the PostgreSQL database (default: 'BBC_NEWS_DATABASE').
+
+    POSTGRES_TABLE_NAME : str
+        Name of the table to store news articles (default: 'BBC_NEWS_TABLE').
+
+    POSTGRES_HOST : str
+        Host address of the PostgreSQL server (default: 'localhost').
+
+    POSTGRES_PORT : int
+        Port number for the PostgreSQL server (default: 5432).
+
+    POSTGRES_USER : str
+        Username for the PostgreSQL database (default: 'admin').
+
+    POSTGRES_PASSWORD : str
+        Password for the PostgreSQL database (default: 'admin').
+    """
+    POSTGRES_DATABASE_NAME: str = os.getenv("POSTGRES_DATABASE_NAME", "BBC_NEWS_DATABASE")
+    POSTGRES_TABLE_NAME: str = os.getenv("POSTGRES_TABLE_NAME", "BBC_NEWS_TABLE")
+    POSTGRES_HOST: str = os.getenv("POSTGRES_HOST", "localhost")
+    POSTGRES_PORT: int = int(os.getenv("POSTGRES_PORT", 5432))
+    POSTGRES_USER: str = os.getenv("POSTGRES_USER", "admin")
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "admin")

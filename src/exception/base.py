@@ -1,8 +1,10 @@
 import os
+import sys
 
 
 def error_message_detail(error, error_detail):
-    tb = error_detail.exc_info()[2]
+    # tb = error_detail.exc_info()[2]
+    _, _, tb = sys.exc_info()
     if tb is None:
         file_name = "Unknown"
         line_number = "Unknown"
