@@ -216,7 +216,9 @@ logs
 
 # testing components
 .vscode
-*docker*
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
 # tests
 
 # cicd
