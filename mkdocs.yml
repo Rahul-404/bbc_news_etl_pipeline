@@ -63,8 +63,8 @@ nav:
       - Kubernetes Deployment (Helm/Kind): getting_started/k8s_deployment.md
 
   - Architecture:
-      - High-Level Data Flow: architecture/overview.md
-      - Components Overview: architecture/components.md
+      - High-Level Data Flow: architecture/high_level_data_flow.md
+      - Components Overview: architecture/components_overview.md
 
   - Components (deep dive):
       - Producer (Scraper): components/producer.md
@@ -95,6 +95,7 @@ nav:
   - API Reference:
       - Mongo Connector: api/clients.mongo_connector.md
       - RabbitMQ Connector: api/clients.rabbitmq_connector.md
+      - Postgress Connector: api/clients.postgress_connector.md
 
   - FAQ: faq.md
 
