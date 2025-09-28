@@ -35,12 +35,12 @@ This project demonstrates the design of a **real-world end-to-end data engineeri
 
 ## Quick Links
 
-* [mkdocs.yml](#) — Site configuration for documentation
-* [docs/](#) — Markdown pages with detailed explanations
+* [mkdocs.yml](https://github.com/Rahul-404/bbc_news_etl_pipeline/blob/main/mkdocs.yml) — Site configuration for documentation
+* [docs/](https://github.com/Rahul-404/bbc_news_etl_pipeline/tree/main/docs) — Markdown pages with detailed explanations
 * [helm/](#) — Helm charts for deploying services on Kubernetes
 * [k8s/](#) — Base Kubernetes manifests for each service
 * [docker/](#) — Dockerfiles for containerizing pipeline components
-* [README.md](#) — Project overview and instructions
+* [README.md](https://github.com/Rahul-404/bbc_news_etl_pipeline/blob/main/README.md) — Project overview and instructions
 
 ---
 
@@ -51,5 +51,3 @@ This project is **portfolio-ready** because it demonstrates:
 * **Full-stack data engineering skills** – ETL, message queues, database design, monitoring, and deployment.
 * **Production-grade design patterns** – scalability, observability, reliability, and reproducibility.
 * **Cloud-native approach** – Kubernetes, Helm, Docker, and Terraform integration.
-
-It’s an ideal showcase for **data engineering roles**, demonstrating your ability to handle **end-to-end data pipelines in a real-world environment**.
