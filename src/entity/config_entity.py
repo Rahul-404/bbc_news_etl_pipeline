@@ -2,7 +2,7 @@ import os
 import platform
 from dataclasses import dataclass
 from datetime import datetime
-from typing import ClassVar, Tuple
+from typing import Tuple
 
 from dotenv import load_dotenv
 
@@ -40,7 +40,7 @@ class MongoDBConfig:
     MONGO_DOC_ARTICLE_URL_KEY : str
         Key name for the document's article URL (default: 'url').
     """
-    MONGODB_SERVICE_NAME: ClassVar[str] = os.getenv("MDB_SERVICE_NAME", "MongoDBService")
+    MONGODB_SERVICE_NAME: str = os.getenv("MDB_SERVICE_NAME", "MongoDBService")
     MONGODB_DATABASE_NAME: str = os.getenv("MDB_DATABASE_NAME", "BBC_NEWS_DATABASE")
     MONGODB_DATA_COLLECTION_NAME: str = os.getenv("MDB_DATA_COLLECTION_NAME", "RAW_BBC_NEWS_COLLECTION")
     MONGODB_BACKUP_DATA_COLLECTION_NAME: str = os.getenv("MDB_BACKUP_DATA_COLLECTION_NAME", "BACKUP_BBC_NEWS_COLLECTION")
@@ -55,8 +55,8 @@ class MongoDBConfig:
     MONGO_HOST: str = os.getenv("MONGO_HOST", "localhost")
     MONGO_PORT: int = int(os.getenv("MONGO_PORT", 27017))
     MONGODB_URI: str = f"mongodb://{MONGO_HOST}:{MONGO_PORT}/"
-    MAX_RETRIES: ClassVar[int] = 3
-    RETRY_DELAY: ClassVar[float] = 1.0
+    MAX_RETRIES: int = 3
+    RETRY_DELAY: float = 1.0
 
 @dataclass
 class RabbitMQConfig:
