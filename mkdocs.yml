@@ -96,17 +96,17 @@ nav:
   - API Reference:
       - Mongo Connector:
         - Mongo Base: api/mongo/mongo_base.md
-        - Mongo (Work Generator): api/clients/mongo/mongo_work_generator_repository.md
-        - Mongo (Producer): api/clients/mongo/producer_repository.md
-        - Mongo (Consumer): api/clients/mongo/consumer_repository.md
-        - Mongo (Factory): api/clients/mongo/repository_factory.md
+        - Mongo (Work Generator): api/mongo/mongo_work_generator_repository.md
+        - Mongo (Producer): api/mongo/producer_repository.md
+        - Mongo (Consumer): api/mongo/consumer_repository.md
+        - Mongo (Factory): api/mongo/repository_factory.md
       - RabbitMQ Connector:
-        - Rabbit Base: api/clients/rabbitmq/rabbitmq_base.md
-        - Rabbit (Work Generator): api/clients/rabbitmq/rabbitmq_work_generator_repository.md
-        - Rabbit (Producer): api/clients/rabbitmq/rabbitmq_producer_repository.md
-        - Rabbit (Consumer): api/clients/rabbitmq/rabbitmq_consumer_repository.md
+        - Rabbit Base: api/rabbitmq/rabbitmq_base.md
+        - Rabbit (Work Generator): api/rabbitmq/rabbitmq_work_generator_repository.md
+        - Rabbit (Producer): api/rabbitmq/rabbitmq_producer_repository.md
+        - Rabbit (Consumer): api/rabbitmq/rabbitmq_consumer_repository.md
       - Postgress Connector:
-        - Postgres Base: api/clients/postgres/postgres_base.md
+        - Postgres Base: api/postgres/postgres_base.md
       - Selenium Component: api/components.selenium_bot.md
       - Url Scraper Component: api/components.url_scraper.md
 
