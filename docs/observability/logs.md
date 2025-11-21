@@ -68,3 +68,27 @@ Loki provides **centralized logging** for all components of the BBC News ETL pip
 * Monitor **DLQ-related logs** to ensure no messages are lost.
 * Use **retention policies** to manage storage.
 * Secure Loki endpoints and use **role-based access control** for production environments.
+
+```mermaid
+flowchart TD
+
+    A[Pipeline Run] -->|1 per pipeline| B[job_id]
+
+    B --> C1[Worker / Pod 1]
+    B --> C2[Worker / Pod 2]
+    B --> C3[Worker / Pod 3]
+
+    C1 -->|1 per worker| D1[context_id W1]
+    C2 -->|1 per worker| D2[context_id W2]
+    C3 -->|1 per worker| D3[context_id W3]
+
+    D1 -->|Many tasks inside worker| T1a[task_id: Extract]
+    D1 --> T1b[task_id: Transform]
+    D1 --> T1c[task_id: Load]
+
+    D2 --> T2a[task_id: Extract]
+    D2 --> T2b[task_id: Transform]
+
+    D3 --> T3a[task_id: Scrape URL]
+    D3 --> T3b[task_id: Publish to Queue]
+```
