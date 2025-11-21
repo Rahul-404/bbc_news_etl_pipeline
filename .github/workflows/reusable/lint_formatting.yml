@@ -1,0 +1,30 @@
+name: Lint & Formatting Code
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10" # Or multiple versions using a matrix build
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run flake8
+        run: flake8 --count --show-source --statistics
+
+      - name: Run Mypy
+        run: |
+          mypy .
+
+      - name: Pylint
+        run: |
+          pylint $(git ls-files -- '*.py' ':!: **/migrations/*.py')
