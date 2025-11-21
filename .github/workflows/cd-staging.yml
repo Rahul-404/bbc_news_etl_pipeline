@@ -1,0 +1,95 @@
+name: Staging Deployment
+
+on:
+  push:
+    branches:
+      - "staging"
+
+# Permissions required for OIDC authentication
+permissions:
+  contents: read
+  id-token: write # Required for assuming IAM role via OIDC
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+
+  # Provisioning : Ensure staging infrastructure is ready.
+  # --- 1. Build and Push the Docker Image (as a job dependency) ---
+  build-image:
+    uses: ./.github/workflows/reusable/build_docker.yml
+    with:
+      image_name: 'myapp'
+    secrets:
+      AWS_IAM_ROLE_ARN: ${{ secrets.AWS_IAM_ROLE_ARN }}
+      ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+
+  # Access : Config	Authenticate with AWS/Kubernetes.
+  # --- 2. Provision Staging Infrastructure with Terraform ---
+  terraform-apply:
+    runs-on: ubuntu-latest
+    needs: build-image
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init & Apply
+        # Assumes terraform code is in the ./terraform/staging directory
+        run: |
+          terraform init
+          terraform apply -auto-approve
+        working-directory: ./terraform/staging
+
+  # Deployment :	Roll out the new Docker image version.
+  # --- 3. Deploy Application to EKS via Helm ---
+  deploy-app:
+    runs-on: ubuntu-latest
+    needs: terraform-apply
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials and Kubeconfig
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Update Kubeconfig for EKS Access
+        run: aws eks update-kubeconfig --name your-eks-cluster-name --region us-east-1
+
+      - name: Deploy to staging via Helm
+        # Uses the image tag output from the build-image job
+        run: |
+          helm upgrade --install myapp ./k8s/chart \
+            --namespace staging \
+            --create-namespace \
+            --set image.tag=${{ needs.build-image.outputs.image_tag }} \
+            --set image.repository=${{ secrets.ECR_REGISTRY }}/myapp
+
+  # Testing :	Verify health and functionality in staging.
+  # --- 4. Run Smoke Tests ---
+  smoke-tests:
+    runs-on: ubuntu-latest
+    needs: deploy-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Test Dependencies
+        run: pip install pytest requests
+
+      # A production grade wait step (requires kubectl/aws in runner)
+      - name: Wait for Deployment Readiness
+        run: |
+          # Wait for myapp deployment to be ready (timeout after 5 minutes)
+          kubectl rollout status deployment/myapp --namespace staging --timeout=5m
+
+      - name: Run Smoke Tests
+        run: pytest tests/smoke_tests/
