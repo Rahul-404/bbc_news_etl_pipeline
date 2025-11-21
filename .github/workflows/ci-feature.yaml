@@ -14,5 +14,5 @@ jobs:
     uses: ./.github/workflows/reusable/lint_formatting.yml
   # Unit testing
   unit-tests:
-    uses: ./.github/workflows/reusable/unit_tests.yml
+    uses: ./.github/workflows/reusable/unit_test.yml
     needs: lint

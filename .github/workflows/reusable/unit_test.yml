@@ -21,8 +21,11 @@ jobs:
         with:
           python-version: ${{ inputs.python_version }}
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install Poetry & dependencies
+        run: |
+          pip install poetry
+          poetry install --no-interaction --no-root
 
       - name: Run unit tests
-        run: pytest tests/unit -q
+        run: |
+          poetry run pytest tests/unit -q
